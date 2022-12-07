@@ -50,6 +50,41 @@ Ex: cut -f2 -d"(" telefones | cut -f1 -d")"
 
 paste -> Colando cadeias de caracteres
 
+Junta pedaços de arquivos
+
+Syntax: paste [arquivo1] [arquivo2] ... [arquivoN]
+
+Cada linha de um arquivo é colada à linha da posição correspondente do outro arquivo, de maneira a formar 
+linahs únicas que serão mandadas para a saída padrão
+
+cat /etc/passwd | cut -f1 -d: > /tmp/login -> Primeiro campo (-f1) mandado para /tmp/logins
+cat /etc/passwd | cut -f3 -d: > /tmp/uid -> Terceiro campo (-f3) mandado para /tmp/uid
+paste /tmp/logins /tmp/uid -> Junta as linhas dos dois arquivos 
+
+***Insere as linhas com separador <TAB>
+
+-d -> Análogo ao cut, permitindo o uso de um delimitador (necessita aspas ou apóstrofos caso seja metacaractere)
+Ex: paste -d: /tmp/logins /tmp/uid
+
+
+-s -> Transforma linhas de um arquivo em colunas, separadas por <TAB>.
+Ex: paste -s /tmp/logins
+Ex: paste -s -d" " /tmp/logins -> Utilizar espaço como separador
+
+
+---------------------------------------------------------------------------------------
+
+tr -> Recebe dados da entrada padrão, convertendo-os mediante um padrão específicado
+
+Syntax: tr [-opção] <dos-caracteres> <para-os-caracteres>
+
+Onde <dos-caracteres> e <para-os-caracteres> são um ou mais caracteres. Qualquer caractere vindo de uma entrada definida, que 
+coincida com um caractere de <dos-caracteres>, será convertido para o correspondente em <para-os-caracteres>, e seu resultado
+é enviado para a saída
+
+Ex: cat quequeisso | > tr a z
+Ex: tr A a < quequeisso -> Versão melhor
+
 
 
 
