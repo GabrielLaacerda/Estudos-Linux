@@ -1,0 +1,15 @@
+Uniq : Util quando deseja-se trabalhar com registros duplicados de uma entrada
+
+Syntax: uniq [entrada] [saída]
+
+***Utilizado sem argumento, copia todos os registros da entrada para a saída, exceto os duplicados
+***Precisa que as duplicadas estejam consecutivas(utilizar sort)***
+
+Ex: sort teelef | uniq
+
+-----------------------------------------------------------------------------------------------------
+
+-d -> Listar somente os registros que estão duplicados no arquivo de entrada
+
+Ex: who | cut -f1 -d" " | sort | uniq -d
+

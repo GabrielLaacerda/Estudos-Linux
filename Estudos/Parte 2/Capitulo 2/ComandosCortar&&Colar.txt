@@ -85,9 +85,58 @@ coincida com um caractere de <dos-caracteres>, será convertido para o correspon
 Ex: cat quequeisso | > tr a z
 Ex: tr A a < quequeisso -> Versão melhor
 
+Ex: head -10 /etc/passwd | cut -f1,6 -d: | tr : '   ' -> Separa os primeiros 10 regsitros de /etc/passwd, pega o 1 e 6 campos.
+Após isso, muda o delimitador para <TAB>
+
+[car*] - Em <para-os-caracteres>, faz cópias de car até o tamanho de <dos-caracteres>
+[car*rep] - Repete rep cópias de car
+[:alnum:] - Letras e dígitos
+[:alpha:] - Letras
+[:blank:] - Espaços em branco horizontais
+[:cntrl:] - Caracteres de controle
+[:digit:] - Dígitos
+[:graph:] - Caracteres imprimíveis - Não inclúi espaços
+[:lower:] - Letras minúsculas
+[:print:] - Caracteres imprimíveis - Inclui Espaços
+[:punct:] - Caracteres de pontuação
+[:space:] - Espaços em branco horizontais e verticais
+[:upper:] - Letras maiúsculas
+[:xdigit:] - Dígitos hexadecimais
+[:=car=:] - Caracteres equivalentes a car
+
+***Representação octal = \nnn***
+
+Exemplos:
+
+tr '[:lower:]''[:upper:]' < quequeisso
+tr ";" "\012" < confusao -> Converte ; em <ENTER>
 
 
+\\ -> backslash
+\a -> audible BeL
+\b -> backspace
+\f -> form feed
+\n -> newline
+\r -> return
+\t -> horizontal tab
+\v -> vertical tab
 
+Ex: tr ";" "\n" < confusao -> Semelhante ao exemplo anterior(<ENTER> == "\n")
+
+Ex: cat quequeisso | tr 'A-Z' 'a-z' -> Texto para minusculo
+
+***Notação a-m, indica todos os caracteres ed m a n em ordem crescente***
+
+-s -> Se houver repetição de algum dos caracteres pesquisados, "espreme-os" gerando somente um na saída
+Ex: ls -l | tr -s ' ' -> COmprime os espaços do comando ls -l
+
+
+-d -> Deleta os caracteres que atendem ao critério da pesquisa
+Ex: tr -d '\12' < quequeisso -> Deleta todos os <ENTER> de quequeisso
+
+
+-c -> Troca o complemento, ou seja, troca o que não foi especificado no conjunto de <dos-caracteres>
+Ex: tr -cs '[:lower:]' '[:upper:]' '[\n]' < DOS.ok | paste - - - -  =  Transforma o arquivo DOS.ok em uma lista de palavras
 
 
 

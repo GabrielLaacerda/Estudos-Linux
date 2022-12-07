@@ -1,0 +1,35 @@
+expr -> Usado para diversas finalidades, como:
+
+Execução de operações aritméticas:
+
+Ex: expr 2+7 = errado
+    expr 2 + 7 = certo
+
+Ex: "2 * 7" -> Proteger o asterístico
+
+***Só aceita números inteiros***
+
+--------------------------------------------------------------------
+
+Calculadora bc:
+
+Ex: echo "(2+3) * 5" | bc
+
+Para utilizar números reais, use a opção scale com q precisão de decimais.
+
+Ex: echo "scale=2; 7*5/3" | bc
+
+Ex: num 5
+    echo "scale=2; ((3 + 2) * $num + 4) / 3" | bc
+
+
+--------------------------------------------------------------------
+
+Interpretador aritmético do Shell:
+
+Utiliza notação: $((exp aritmética))
+
+Ex: echo $(((2+3)*5))
+
+
+
