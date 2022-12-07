@@ -1,0 +1,24 @@
+chown - Troca o dono do arquivo
+chgrp - Troca o grupo do arquivo
+
+----------------------------------------------------
+
+chown: [-f] [-R] dono Arquivo
+
+arquivo: Arquivo a ter dono mudado
+dono: Nome do novo dono do arquivo (deve pertencer ao mesmo grupo do atual)
+-f: Não reposta erros caso ocorram
+-R: Executa o comando recursivamente, aplicandoa subdiretórios
+
+----------------------------------------------------
+
+chgrp: [-f] [-R] grupo arquivo
+
+Para isso, usuário tem que ser dono do arquivo e pertencer ao novo grupo do arquivo.
+***Executado somente por superusuários***
+
+Ex: chgrp prod dica.sh
+
+
+
+

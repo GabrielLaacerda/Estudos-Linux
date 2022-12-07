@@ -1,0 +1,18 @@
+> - Redireciona a saída de um comando para um arquivo especificado (cria caso não exista)
+>> - Redireciona a saída de um comando para o final(anexo) de um arquivo específicado (cria caso não exista)
+2> - Redireciona os erros gerados por um comando para o arquivo específicado.
+
+< - Avisa ao Shell que a entrada padrão não será o teclado, mas sim o arquivo especificado
+<< - Indica ao Shell que o escopo de um comando começa na linha seguinte e termina quando encontra
+linha cujo conteúdo seja unicamento o label que segue o sinal <<
+
+| - Chamando de pipe, serve para redirecionar a saída de um comando para a entrada de outro
+tee - Captura a saída de um comando com pipe, copiando o que esta entrando no tee para a saída 
+padrão de outro comando ou arquivo
+
+$$ - Avariável para compor nome de arquivos temporários gerados por escripts de uso público
+
+***Espaços em branco antes ou depois de labels, geram erros (comando <<)***
+
+cat -vet : Descobrir espaçoes em branco e caracteres especiais em arquivos
+ 

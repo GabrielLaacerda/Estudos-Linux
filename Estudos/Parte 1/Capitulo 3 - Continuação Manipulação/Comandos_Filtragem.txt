@@ -1,0 +1,78 @@
+cat - exibe conteúdo de arquivos
+wc - Conta caracterers, palavras e/ou linhas de arquivos
+sort - Ordena o conteúdo de arquivos
+head - Mostra o inicio dos dados
+tail - Exibe o final dos arquivos
+
+----------------------------------------------------------------
+
+cat: [- opçoes] [nome_arquivo ...]
+
+-v : Mostra os caracteres sem representação na tela
+-e : Mostra os LINE_FEED (ENTER)
+-t : Mostra as <TAB>
+-n : Numera as linhas
+
+cat > texto1.txt -> Le texto do teclado ate "ctrl + d"
+cat texto1.txt : Exibe o conteúdo do arquivo
+
+----------------------------------------------------------------
+
+wc: [-lwc] [arquivo ...]
+
+arquivo: arquivo de entrada cujas palavras, linhas ou caracteres serão
+contados e exibidos na saída padrão. Se este parâmetro for omitido, wc lê da entrada padrão.
+
+-l : Conta as linhas
+-w : Conta as palavras
+-c : Conta os caracteres
+
+----------------------------------------------------------------
+
+sort: [+n1.m1 [-n2.m2]] [ - mnr] [-t sep] [ arq .. . ]
+
+arq - arquivo de entrada a ordenar, que será exibido na saída padrão. Se arq for omitido, os dados a classificar serão 
+recebidos da entrada padrão
+
++n.m1 - considera para ordenação a partir do campo n1, posição m1,
+sendo a 1 a posição zero; 
+
+-n2.m2 - considera para ordenação até o campo , posição m1 , sendo
+a 1 a posição zero; 
+
+-t sep - utiliza sep como caractere para as posições especificadas em
++nl e - n1;
+
+-m - intercala dois arquivos já ordenados, escrevendo a intercalação na saída padrão;
+
+-n - classificação numérica;
+
+-r - inverte a ordem da classificação, de ascendente para descendente. 
+
+----------------------------------------------------------------
+
+head: [-numero] [-cn] [arquivo]
+
+arquivo: Arquivo de entrada, se omitido, le a entrada padrao
+-numero: Mostra as numero primeiras linhas de um arquivo (default=10)
+-c : Mostra os primeiros tamanho caracteres (bytes ). 
+-n : mostra as numero primeiras linhas. Idêntica à
+opção -numero
+
+----------------------------------------------------------------
+
+tail: [+ | - numero] [-cnf] [arquivo]
+
++ numero : mostra arquivo a partir da linha numero até o fim
+- numero : mostra as numero últimas linhas de arquivo
+-c : mostra as numero últimas linhas. Idêntica à opção -numero
+-f : Exibe na tela as linhas do arquivo à medida que ele cresce.
+
+Ex: tail -n 5 /etc/smb.conf
+
+----------------------------------------------------------------
+
+
+
+
+

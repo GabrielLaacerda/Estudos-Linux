@@ -1,0 +1,56 @@
+Linux suporta leitura (r), escrita (w), e execução (x).
+
+ls -l : Ver permissões
+
+-----------------------------------------------------------------
+
+Classes de Acesso a arquivos:
+
+dono(u) - Usuário dono do arquivo
+grupo(g) - Grupo que o arquivo pertence
+outros(o) - Outros usuáriso que não sejam o dono nem pertençam ao grupo do arquivo
+todos(a) - Todos do sistema
+
+Ao executar ls -l -> Primeiro caracter é de tempo.
+9 demais caracterese são dividos em 3 grupos, onde cada um
+representa read, write e execute (nessa ordem).
+
+Após a cadeia de caracteres, vem o dono e depois o grupo.
+
+-----------------------------------------------------------------
+
+chmod: Ajuste de permissões
+
+Comando: chmod string-de-acesso arquivo
+
+Exemplos:
+
+chmod u+w teste -> Permissao de escrita ao dono
+chmod a+w teste ->Permissao de escrita a todos
+chmod g+x,uo+r-w teste -> Grupo executa, dono grava e outros leem mas não gravam
+chmod u=rwx teste -> Dono le, grava e executa
+
+As permissões de acesso podem também ser especificadas numericamente com o comando chmoc
+
+Para calcular o este modo, basta substituir os 9 caracteres das permissões por 9 bits(dígitos 0 ou 1), e converte-los para decimal.
+
+Ex:
+
+                 Dono      Grupo      Outros
+String Acesso    rwx        r-x         r--
+Binário          111        101         100
+Decimal           7          5           4
+
+Equivalencia entre os modelos:
+
+chmod u=rwx,g=rx,o=r teste.txt é igual à chmod 754 teste.txt
+
+
+
+
+
+
+
+
+
+

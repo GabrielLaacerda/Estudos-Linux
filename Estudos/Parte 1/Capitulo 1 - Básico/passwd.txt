@@ -1,0 +1,4 @@
+passwd - Permite ao usuario mudar a sua senha, e ao superusuário, a senha dos demais
+
+
+

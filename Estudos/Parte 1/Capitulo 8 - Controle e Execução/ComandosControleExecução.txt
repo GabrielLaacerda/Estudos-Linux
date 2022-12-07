@@ -1,0 +1,58 @@
+ps - Status dos processos em execução
+kill - Envia sinal a processo
+jobs - Lista processos em background e suspensos
+bg - Passa processos para background
+fg - Traz processos para foreground
+Nohup - Executa processo independentemente de terminal
+
+-----------------------------------------------------------
+
+ps: [-aelux]
+
+-e : Apresenta a linha de comando completa
+-l : Gera saída em formato longo
+-a : Inclui informações sobre processos pertencentes a todos os usuários
+-u : Produz saída orientada a usuários
+-x : Inclui processo não associados a terminais
+-----------------------------------------------------------
+
+kill: [-signal] pid...
+
+sinal : (Ver mais a frente ....)
+pid : Especifica o id od processo ao qual deseja-se enviar o sinal
+-l : Apresenta a lista dos nomes de sinais aceitos pelo comando
+
+Exemplos:
+
+kill -p 241
+kill -STOP pid -> Parar
+kill -CONT pid -> Continuar
+
+-----------------------------------------------------------
+
+Execução em background: A maneira mais simples de colocar um processo em background é
+adicionar o operador e-comercial & ao final da linha de comando
+
+Exemplos: 
+
+mcopy teste.txt a: &
+
+***Se você disparar um programa em foreground e notar que sua execução
+está demorando muito, pode suspendê-lo para liberar o term inal, pressionando 
+simultaneamente as teclas <CTRL>+z***
+
+-----------------------------------------------------------
+
+bg: [%n]
+
+*Parar execução antes (ctrl Z)
+
+n : Número do job desejado (Usar comando jobs para escobrir, default = 1)
+
+-----------------------------------------------------------
+
+fg: [%n]
+
+n : Número do job desejado (Usar comando jobs para escobrir, default = 1)
+
+

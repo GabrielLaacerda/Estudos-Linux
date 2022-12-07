@@ -1,0 +1,22 @@
+help - Informações gerais sobre os built-ins do Shell
+man - Documentacão Linux
+apropos - Informações sobre um tópico
+whaits - Descrição sobre comando do sistema
+
+----------------------------------------------------------------
+
+man: (man l ls/man passwd)
+
+-a: Econtra páginas que coincidam com o padrão
+-p: Indica um programa paginador alternativo
+seção: Indica uma das oito seções do manual a procura
+tópico: Indica qual tópico procurar. 
+
+----------------------------------------------------------------
+
+apropos: Muito útil quando não se sabe o nome do comando
+Ex: apropos compiler
+
+
+
+

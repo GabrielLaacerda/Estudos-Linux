@@ -1,0 +1,45 @@
+Arquivos = [2ehbom  confusao  kadeo     Param   param5    rem        teles
+            aa      DEADJOE   listdir   param1  param6    tafechado  testchar
+            add     DuLoren   listdir1  param2  pedi      talogado   testsex
+            bdb     erreeme   lt        param3  pp        tavazio    tputcup
+            bronze  hora      medieval  param4  ququisso  telefones  tr       ]
+
+
+ls * -> Lista os arquivos/diretórios do diretório atual, e seus subdiretórios/subarquivos
+Saída Comando: [Todos]
+
+ls [Pp]* -> Exibe todos os arquivos/diretorios que começam com P ou p, e seus subdiretorios/subarquivos
+Saída Comando: [Param  param1  param2  param3  param4  param5  param6  pedi  pp]
+
+ls [c-ms-z]*o -> Lista arquivos/diretorios que comecem com letras entre c/m ou s/z, que tenham
+algo no meio(*) e terminem com a letra o
+Saída Comando: [confusao  kadeo  tafechado  talogado  tavazio]
+
+ls param? -> Lista todos os arquivos/diretorios que comecem com param e tenham pelo menos mais um caractere subsequente
+Saída Comando: [param1  param2  param3  param4  param5  param6]
+
+ls ?aram? -> Lista arquivos ou diretorios que comecem com um caractere qualquer, seja seguido por "aram" e tenha mais um caractere 
+qualquer ao final
+Saída Comando: [param1  param2  param3  param4  param5  param6]
+
+ls [!lpt]*o -> Lista arquivos ou diretórios que não comecem com as letras l/p/t, que tenham algo no meio(*) e termine com a
+letra 'o'
+Saída Comando: [confusao  kadeo  ququisso]
+
+ls [apt][ae][dls]* -> Lista arquivos ou diretorios que tenham como primeira letra a/p/t, a segunda como a/e, a terceira como
+d/l/s e tenham algo na sequencia(*)
+Saída Comando: [pedi  talogado  telefones  teles  testchar  testsex]
+
+ls *[!4-6] -> Lista arquivos ou diretórios que comecem com algo(*), e não tenham os caracteres de 4 a 6 (4,5 e 6)
+Saída Comando: [Todos - param4, param5, param6]
+
+ls *[aeiou] -> Lista arquivos e diretorio que começam com algo (*) e terminal em vogais
+Saída Comando: [aa  confusao  hora   pedi  tafechado  tavazio
+bronze  erreeme   kadeo  ququisso  talogado]
+
+ls te[!s]* -> Lista arquivos e diretos que ocmecem com 'te', não tenham a letra 's' logo após o 'te' e tenham algo subsequente(*)
+Saída Comando: [telefones  teles]
+
+
+
+

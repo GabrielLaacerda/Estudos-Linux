@@ -1,0 +1,39 @@
+Comandos para adminsitrar usuáriso
+
+who - Exibe informações sobre usuários ativos e alguns dados do sistema
+id - Informa os identificadores dos usuários
+finger - Exibe informações mais detalhadas sobre os usuários
+chfn - Permite que o usuário altere as suas informações do finger
+groups - Informa os grupso aos quais o usuário pertence
+
+------------------------------------------------------------------------------
+
+who: [-mH] [am i]
+
+am i - Exibe informações d login do próprio usuário
+-m - igual ao who am i
+-H - Mostra um cabeçalho
+-a Mostra diversas informações sobre o sistema e os usuários
+
+------------------------------------------------------------------------------
+
+id:
+
+-n : Mostra o nome do usuários e grupos ao invés de identificadores
+-g : Mostra apenas o identificador ao qual o usuário pertence
+-G : Mostra os grupos ao qual o usuário pertence
+-u : Mostra apenas o identificador do usuário
+
+------------------------------------------------------------------------------
+
+chfn:
+
+-f : Modifica o nome do usuário
+-r : Modifica a localização do usuário
+-p : Modifica o telefone de trabalho do usuário
+-h : Modifica o telefone residencial do usuário
+-o  Informações adicionais. Somente o root pode altera-las
+
+
+
+

@@ -1,0 +1,32 @@
+date: [-s] [+formato]
+
+Ex: date ou date "+Hoje a data é %d/%m/%Y%n e a hora é %T"
+
+%n - Quebra de linha
+%t - Tabulação
+%m - Mês
+%d - dia
+%y - ano
+%Y - Ano com dois dígitos
+%D - Data no formato MM/DD/AA 
+%H - hora
+%M - Minuto
+%S - Segundo
+%T - Hora no formato HH:MM:SS 
+%j - Dia do ano
+%w - Dia da semana (dom=0 a sab=6)
+%a - Dia da semana abreviado
+%h - Mês abreviado
+
+Pegando datas passadas: date --date '1 day ago'
+Pegando datas futuras: date --date='1 day'
+
+Ex: Em que dia cairá o natal desse ano ?
+Resp: date --date '25 Dec' + %a
+
+Outro exemplo: Date --date= '1 day 1 month 1 year ago'
+
+-----------------------------------------------------------------
+
+cal: Exibe o calendario
+

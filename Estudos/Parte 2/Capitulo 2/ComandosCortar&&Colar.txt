@@ -1,0 +1,59 @@
+cut: Cortar cadeias de caracteres
+Este comando extrai campos ou pedaços de dados de arquivos, ou de qualquer entrada
+
+Syntax: cut -ccaracteres [arquivo]
+
+Onde caracteres é a porção que se deseja cortar de cada regsitro de arquivo
+
+cut -cposicao arq -> Retorna todos os caracteres de posição
+cut -cposini-posifim arq -> Retorna todas as cadeias entre posini e posifim
+cut -cposini- arq -> Retorna todas as cadeias a partir de posini
+cut -c-posfim arq -> Retorna todas as cadeias do início até posfim
+
+Exemplos:
+
+who | cut -c-8 -> Extrair da saída do who até o oitavo caractere
+who | cut -c10-15 -> Extrair da saída do who do décimo até o décimo quinto caractere
+who | cut -c32- -> Extrair da saída do who a partir do 32 caractere
+
+---------------------------------------------------------------------------------------
+
+-f(field) -> Serve para especificar campos(fields) que desejamos extrair, obedecendo às mesmas regras
+do -c caractere:
+
+cut -fcampo arq -> Retorna o campo campo
+cut -fcampoini-campofim arq -> Retorna campos de campoini a campofim
+cut -fcampoini- arq -> Retorna todos os campos a partir de campoini
+cut -f-campofim arq -> Retorna todos os campos até o campofim
+
+---------------------------------------------------------------------------------------
+
+-d(delimitador) -> Usando essa opção, descrevemos para o cut qual será o separadorde campos do arquivo.
+***É necessária a utilização de aspas ou apóstrofos nos caracteres que o Shell possa interpretar como metacaracteres***
+
+Syntax: cut -fcampos [-ddelimitador] arquivo
+
+Onde delimitador é o caractere que delimita todos os campos de arquivo
+
+Ex: tail -4  /etc/passwd | cut -f1 -d: -> Extraindo da saída de tail, somente o primeiro campo
+
+Ex: Arquivo 'telefone' foi criado com 2 campso separados por <TAB>.
+
+cat telefones | cut -f1 -> Extrai somente o primeiro campo (Delimitador <TAB> é o padrão, por isso foi imitido)
+
+Ex: cat telefones | cut -f1 -d" " -> Utilizando o delimitador espaço com as aspas (é um metacaracter)
+Alternativo(melhor): cut -f1 -d " " telefones
+
+Ex: cut -f2 -d"(" telefones | cut -f1 -d")"
+
+---------------------------------------------------------------------------------------
+
+paste -> Colando cadeias de caracteres
+
+
+
+
+
+
+
+

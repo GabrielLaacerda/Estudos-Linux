@@ -1,0 +1,13 @@
+Diretório      Tipos de Arquivos
+
+/bin           Utilitários principais do Unix
+/etc           Programas e arquivos administrativos
+/lib           Bibliotecas de funções, programas e dados
+/tmp           Arquivos temporários
+/home/user     Arquivos do usuário 
+/usr/bin       Utilitários
+/usr/sbin      Utilitários usados somente pelo "root"
+/usr/include   Arquivos de cabeçalho (por exemplo, da linguagem C)
+/usr/lib       Bibliotecas de funções
+/usr/spool     Áreas de spool (por exemplo, de mail e impressora)
+/dev           Arquivos especiais de dispositivo

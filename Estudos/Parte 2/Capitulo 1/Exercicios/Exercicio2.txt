@@ -1,0 +1,27 @@
+Arquivos = [2ehbom  confusao  kadeo     Param   param5    rem        teles
+            aa      DEADJOE   listdir   param1  param6    tafechado  testchar
+            add     DuLoren   listdir1  param2  pedi      talogado   testsex
+            bdb     erreeme   lt        param3  pp        tavazio    tputcup
+            bronze  hora      medieval  param4  ququisso  telefones  tr       ]
+
+
+ls | wc -l -> Pega a saída do comando ls e joga para o comando wc que conta linhas, caracteres...
+Utilizando o para metro -l, irá retornar 35(Número de diretórios/arquivos)
+
+ls > /tmp/$$ 2> /tmp/x$$ -> Redirecionar a saída de ls para '/tmp/$$' e eventuais erros para
+'/tmp/x$$'
+
+ls NuncaVi >> /tmp/$$ 2>> /tmp/x$$ -> Caso o arquivo NuncaVi exista, anexa o conteudo
+do comando ls no final do arquivo '/tmp/$$', caso exista algum erro, anexa no final do 
+arquivo '/tmp/x$$'
+
+echo Nome do Sistema: uname -> Printa exatamente a String após o echo
+echo Nome do Sistema: `uname` -> Printa a string porém substitui o comando em crases(uname por Linux)
+
+mail procara < mala -> Envia email para 'procara' com o conteudo de 'mala'
+
+(cd ; pwd) -> Executará os comandos 'cd' e 'pwd' em um shell secundario e depois retornará
+
+cat quequeisso | tee qqisso -> Joga a saída do comando cat para o comando tee que copia para
+o arquivo qqisso
+

@@ -1,0 +1,284 @@
+/ -> Indicador de pesquisa/Após uma pesquisa, repete a mesma
+
+
+Exemplos: 
+
+/vasco (Procurará a sequencia de caracteres vasco em qualquer lugar da linha)
+1, $p -> Listar(p) da primeira(1) ate a ultima($) linha
+/EH -> Pesquisa a ocorrencia da cadeia EH 
+
+----------------------------------------------------------------------------------
+
+^ -> Inicio da linha
+
+Pesquisa uma cadeia de caracteres no início da linha
+
+Ex: /^brasil -> Busca 'brasil' no inicio de linha
+
+----------------------------------------------------------------------------------
+
+$ -> Fim da linha
+
+Busca ocorrencia de caracteres no fim de uma linha
+
+Exemplo: /brasil$
+
+----------------------------------------------------------------------------------
+
+. -> Coringa posicional, onde houver o '.', qualquer caractere é valido
+
+Ex: /UNIX.$
+
+----------------------------------------------------------------------------------
+
+s // -> Substituição. Para trocar cadeia de caracteres por outra, usa-se um 's' seguido da cadeia inicia entre
+duas barras e da cadeia final
+
+Ex: s/alhos/bugalhos
+
+***Substitui somente a primeira ocorrencia de cada linha***
+
+u -> Desfaz a última alteração
+
+Para alterar globalmente: Acrescentar o 'g' ao final da expressão
+
+Ex: 1,$ s/de/xx/g
+
+----------------------------------------------------------------------------------
+
+sed: Editor de fluxo para filtrar e transformar textos
+
+Syntax: sed expressao regular [arquivo]
+
+Podem ocorrer de duas maneiras:
+
+1 - Referenciando a linha pelo seu número
+Ex: sed '4,9' arquivo (Entre as linhas 4 e 9)
+    sed '4' arquivo (Somente na linha 4)
+
+2 - Procurando por uma cadeia no texto
+Ex: sed '/cadeia/...' arquivo (Nas linhas que a palavra 'cadeia' for encontrada)
+    sed '/cadeia1/,/cadeia2/...' arquivo (Entre a primeira ocorrencia de 'cadeia1' e a primeira de 'cadeia2')
+
+
+Ex: Da linha 1 até a 2, substituir as letras maiusculas [A-Z], por nada. Após isso, globalizar a pesquisa
+por todas as ocorrencias nas duas linhas e por fim, redirecionar a saída para um arquivo.
+
+Resp: sed '1,2s/[A-Z]//g' quequeisso > /tmp/ex -> // Indica a troca por nada/vazio
+
+Outros exemplos:
+
+sed 's/r/X/2' quequeisso -> Segunda ocorrencia da letra 'r' é substituida por 'X'
+sed 's/r/X/2g' arquivo -> Substitui todas as ocorrencias a partir da segunda (de cada linha)
+
+Exemplo de maneira boa e ruim do comando:
+Ruim:
+cat quequeisso | sed 's/ .* //' -> Envia o texto para o sed, q ue substituiu tudo após o primeiro espaço por nada (//)
+
+Boa:
+sed 's/ .//' quequeisso
+
+
+***Para que as alterações tenham efeito, redirecionar para outro arquivo (nunca o mesmo) e depois utilizar comando mv***
+
+----------------------------------------------------------------------------------
+
+y -> Função para substituir caractere
+
+Quando usado, o que estiver entre os separadores da função, não serão vistos pelo sed como uma cadeia, mas sim um agrupamento
+de caracteres
+
+
+Ex:
+
+sed 'y/BCDbcd/123123' quequeisso -> Substitui as tres primeiras consoantes (bcd ou BCD) por algarismos de 1 a 3, respeitando a ordem
+***Caso fosse usado a função 's', só haveria troca se existisse a cadeia 'BCDbcd' no arquivo
+
+----------------------------------------------------------------------------------
+
+print -> Função imprime
+
+Usado para imprimir linhas de umendereço especificado ou que atendam a determinado argumento de epsquisa
+
+Ex: sed '/UNIX/p' quequeisso -> O 'p' imprime a linha que atende à expressão duplicada, e o resto do texto normalmente
+    sed '/UNIX/!p' quequeisso -> Nega o 'p', e imprime todas as linhas que não atendem a expressão (duplicadas(tambem imprime as que contem UNIX normalmente))
+
+
+----------------------------------------------------------------------------------
+
+d -> Deleta linha
+
+Deleta linhas referenciadas ou que atendam o argumento de pesquisa
+
+Ex:
+
+sed '1,4d' quequeisso -> Deleta da linha 1 até a linha 4
+sed '/UNIX/d' quequeisso -> Deleta linhas que contenham 'UNIX'
+
+
+----------------------------------------------------------------------------------
+
+a -> Função Acrescentar
+
+Acrescenta após o endereço informado, uma nova linha cujo conteúdo é informado a seguir
+
+Syntax: sed '<endereço>a\ 
+<texto a ser inserido>`arquivo
+
+***A primeira linha do comando deve ser interrompida após o a utilizando a barra ivnertida. O primeiro > das linhas seguintes
+é o prompt secundário do UNIX
+
+Ex: sed '2a\
+         > 3 -- Como esperávamos a linha 3 fica após a segunda linha' quequeisso
+
+----------------------------------------------------------------------------------
+
+i -> Função insere
+
+Idêntica a função acrescenta, porém não insere após o endereço especificado, mas sim antes dele.
+
+----------------------------------------------------------------------------------
+
+c -> Função troca (change)
+
+Idêntica a função acrescenta, porém não insere após o endereço específicado, mas sim, troca o conteúdo desse endereço
+pelo informado no comando
+
+----------------------------------------------------------------------------------
+
+q -> Função finaliza (quit)
+
+Serve para marcar o ponto de término de execução do sed
+
+Ex:
+
+cat quequeisso | sed '/UNIX/q' -> Encerra o comando quando encontrar UNIX 
+sed '/UNIX/q' quequeisso -> Equivalente ao de cima
+
+----------------------------------------------------------------------------------
+
+-n -> Para que possamos listar somente as linhas que atendem aos critérios de pesquisa ou endereços específicados.
+O comando fala ao sed que, não(not) mande para a saída, a não ser algo que explicitamente o mande faze-lo
+
+***Vem sempre acompanhada da função 'p' para mandar os dados para a saída***
+
+Ex:
+
+sed -n '/ de /p' quequeisso -> Separar linhas que contenham pelo menos um 'de' (entre dois espaços), das que não contenham
+sed -n '/ de /!p' -> Linhas que não contém a cadeia
+
+----------------------------------------------------------------------------------
+
+-i -> Salvar definitivamente um arquivo quando alterado pelo sed
+
+Ex: 
+
+sed -i 's/os/the/g' quequeisso -> Altera todos os 'os' do arquivo por 'the' (altera também ocorrencias dentro de palavras)
+
+sed -i.velho 's/ os / the /g' quequeisso -> Altera o arquivo e salva o original em <nomearquivo>.velho
+
+***Caso o -i não venha acompanhado da extensão, altera o arquivo original***
+
+----------------------------------------------------------------------------------
+
+-r -> Avisa ao sed que serão usados metacaracteres avançados
+
+Ex: sed -r
+'s/^([0-9)( 2))\/( [0-9) {2))\/ (( 0-9) {4) )$/\3\/\2\/\ 1/ '<<< 31/12/2009 
+
+----------------------------------------------------------------------------------
+
+Família de comandos grep:
+
+Exemplos de grep:
+
+grep UNIX quequeisso -> Entrada é um arquivo. Busca linhas que contenham UNIX no arquivo.
+grep grep *.sh -> Entrada são os arquivos terminados em .sh / Lista todas as linhas, de todos os arquivos
+terminados em .sh no diretório corrente, que contenham a cadeia grep
+
+ps axu | grep gabriel -> Entrada é um comando. Localizar os processos em execução pelo usuário gabriel
+
+Familia de comandos:
+
+grep -  Pesquisa cadeias de caracteres a partir de uma entrada definida (Não interpreta parenteses nem '|')
+egrep - Idêntico ao egrep, porém mais poderoso e lento.
+fgrep - Utilizado para pesquisa sem expressões regulares, por sua velocidade.
+
+***Ao usar expressões regulares, coloca-los entre apóstrofos***
+
+
+Ex: grep '^[iI]' quequeisso -> Localizar linhas começadas (^) por i ou U
+    ls -la | grep '^-' -> Arquivos comuns do nosso diretório(aqueles cuja linha no ls -l começa por um '-'))
+
+ls -la | egrep '^-..(x|s)' -> Arquivos executaveis pelo dono(contem primeira posição = '-' e quarta 
+posição = 'x' ou 's')
+
+Equivalente com grep: ls -la | grep '^-..[xs]'
+
+--------------------------------------------------------------------
+
+Comandos para utilizar juntamente com os da familia grep
+
+-c(count/contar) -> Devolve a quantidade de linhas em que foi encontrada uma cadeia alvo da pesquisa.
+
+Ex: echo Existem `grep -c '^Maria ' CadPess` Marias trabalhando na empresa -> Quantidade de Marias que trabalham
+na empresa.
+***Crases foram usadas para priorizar a execução do comando grep
+
+
+
+-l -> Descobrir quais arquivos possuem uma determinada cadeia de caracteres sem se interessar com nenhum
+outro detalhe desses arquivos.
+
+Ex: fgrep -l ArqOls *.sh  
+
+
+
+-v -> Devolve todas as linhas que não possuem a cadeia pesquisada
+
+Ex: grep -v '^Kara:' /etc/passwd > /tmp/passwd
+
+
+
+-f(file) -> Pesquisa um arquivo, procurando por Expressões regulares contidas em outro arquivo, que
+será definido pela expressão -F
+... continuar
+
+
+-o -> Devolve somente a parte que casou com a expressão regular especificada. 
+
+Ex: grep -o 'a.*a' <<< batatada -> Retorna atatada
+    grep -o 'a.*a' <<< batatuda
+
+
+
+Antes ou Depois:
+
+-A n(A de after - depois) - Pega além da linha que casou com a Expressão regular, n linhas após
+-B n(B de before - antes) - Pega Além da linha que casou com a Expressão regular, n linhas antes
+
+Ex: ifconfig | grep -A7 '^wlan0'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

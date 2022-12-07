@@ -1,0 +1,202 @@
+pwd -       Informa o nome do diretório corrente
+cd  -       Navegando entre diretórios
+ls  -       Listar arquivos
+cp  -       Cópia de arquivos e diretórios
+mv  -       Move arquivos e diretórios
+ln  -       Estabelece ligações entre arquivos
+mkdir -     Cria um diretório
+rmdir -     Remove um diretório vazio
+rm  -       Apaga arquivos e diretórios
+file -      Indicando tipo de arquivo
+grep -      Procura arquivos por conteúdo
+find -      Localiza arquivo por suas características
+basename -  Devolve o nome de um arquivo recebendo o caminho completo
+dirname -   Devolve o nome do diretório recebendo o caminho completo 
+
+------------------------------------------------------------------------
+cd:
+
+.   Diretório Atual
+..  Diretório Anterior
+~   Diretório home do usuário
+/   Diretório Raiz
+-   Ultimo Diretório 
+
+------------------------------------------------------------------------
+ls: ls [opções] [arquivo/diretório]
+
+-l : Lista os arquivos em formato detalhado
+-a : Lista todos os arquivos
+-r : Lista em ordem alfabética reversa
+-h : Junto com -l imprime o tamanho do arquivo de forma mais legível
+-R : Lista também os subdiretórios 
+
+Coringas: 
+
+* : Substitui "qualquer coisa no texto" -> ls *sh
+? : Substitui uma letra -> ls ???.sh
+
+Exemplos: 
+ls [os]*.sh -> Lista todos os arquivos que começam com o ou s, seguidos por qualquer coisa e terminados por .sh
+ls [!os]*.sh -> Arquivos que não começam com o ou s ...
+ls [A - Z]*.sh -> Arquivos que começam com letra maiúscula...
+
+------------------------------------------------------------------------
+
+cp: [opçoes] <arq-origem> <arq-destino>
+
+-i : Modo interativo (caso arquivo ja exista no destino, pede confirmação)
+-v : Mostra o que está sendo copiado
+-r : Copia recursivamente
+
+------------------------------------------------------------------------
+
+mv [opções] <arq-origem> <arq-destino>
+
+Pode ser utilizado para renomear arquivos ou para"mover" arquivos
+
+Renomeando: mv script.sh script.velho (atual será "script.velho")
+Movendo: mv arq /fs2
+
+------------------------------------------------------------------------
+ln:
+
+Hard Link: neste caso, o arquivo ligação tem o mesmo inocte do arquivo- origem, isto é, os dois compartilham os dados
+Link Simbólico: neste caso, o arquivo ligação tem inode diferente do arquivo-origem, e seu conteúdo é somente o caminho do
+arquivo-origem. 
+
+Hard-link -> ln sinteticof sinteticoc
+Link Simbólico -> ln -sf sinteticof sinteticoc 
+
+------------------------------------------------------------------------
+
+rmdir: rmdir ~/dirtst(remove diretorio dirtst do home se não tiver conteúdo)
+
+-f : Ignora arquivos inexistentes e não pede confirmação
+antes de remover 
+-I : Sempre pede confirmação antes de remover 
+-r : Remove o(s) diretório(s) especificado(s) e seu(s) conteúdo(s), recursivamente
+
+------------------------------------------------------------------------
+
+file: Retorna tipo do arquivo
+
+file nuntodc.sh
+file dire
+file banco
+
+------------------------------------------------------------------------
+
+grep: [-opcoes] [expressão] [arquivo] [arquvio]
+
+arquivo: Arquivos onde procurar pelo padrão especificado. Se este argumento não é fornecido, grep lê da entrada padrão.
+expressão: Texto a procurar dentro de arquivo, onde expr essao podeainda ser qualquer expressão regular. 
+
+-c : Somente a quantidade de linhas que casarem com uma
+expressão regular
+-i : Não diferencia maiúsculas e minúsculas na procura;
+-l : Não mostra a linha encontrada, somente o nome
+arquivo.
+-v : Inverte a procura, mostrando somente as linhas que não casaram com a expressão especificada. Esta opção
+parece meio maluca, mas não é: é muito útil para excluir registros por um dado arquivo
+-n : Precede cada linha com seu número relativo dentro de arquivo
+
+------------------------------------------------------------------------
+
+find: [caminho ...] expressão [ação]
+
+caminho: Caminhos de diretório a partir do qual irá procurar pelos arquivos
+expressão: Define quais critérios de pesquisa. Pode ser uma combinação entre vários tipos de procura
+ação: Define que ação executar com os arquivos que atender aos critérios de pesquisa definidos por expressão
+
+****Para usar caracteres coringas = estar entre aspas, apóstrofos ou imediatamente precedidos por uma
+contrabarra***
+
+Critérios por EXPRESSÃO:
+
+-name nome : Procura arquivos que tenham o nome especificado
+-user usuário : Procura arquivos que tenham usuário como dono
+-group grupo : Procura arquivos que tenham grupo como grupo dono
+-type c : Procura por arquivos que tenham o tipo c, correspondente à letra do tipo do arquivo
+
+Tipos de valores aceitos:
+
+b : Arquivo especial acessado a bloco 
+c : Arquivo especial acessado a caractere 
+d : diretório
+p : Named pipe (FIFO) 
+f : Arquivo normal
+l : Link simbólico
+s : Socket
+
+-size ±[bckw] : Procura por arquivos que usam mais ( +n) de n unidades
+de espaço ou a menos (-n) de n unidades de espaço. 
+
+b : bloco de 515 bytes
+c : caracteres
+k : kilobytes (1024 bytes)
+w : Palavras (2 bytes)
+
+-atime ±d : Procura por arquivos que foram acessados há mais (+d) de d dias ou a menos (-d) de d dias; 
+
+-ctime ±d : Procura por arquivos cujo status mudou há mais (+ct) de ct dias ou a menos (-d) de d dias; 
+
+-mtime ±d : Procura por arquivos cujos dados foram modificados há mais (+d) de d dias ou a menos (-d) de d dias. 
+
+Para usar mais de um critério de pesquisa, fazer: 
+
+AND: expressão expressão, ou expressão -a expressão para atender aos critérios especificados por expressão e  expressão ;
+OR: expressão -o expressão2 para atender aos critérios especificados por expressão 1 OU expressão
+
+
+Critérios por AÇÃO:
+
+-print : Essa opção faz com que os arquivos encontrados
+sejam exibidos na tela.
+
+-exec cmd {} \; : Executa o comando cmd . O escopo de comando
+é considerado encerrado quando um ponto e vírgula (;) é encontrado. A cadeia 1 1 é substituída pelo
+nome de cada arquivo que satisfaz ao critério de
+pesquisa e a linha assim formada é executada. Assim como foi dito para a opção - name, o ponto e
+vírgula (;)deve ser precedido por uma contrabarra,
+ou deve estar entre aspas ou apóstrofos 
+
+-ok cmd {} \ ; : O mesmo que o anterior, porém pergunta se pode
+executar a instrução cmd sobre cada arquivo que
+atende ao critério de pesquisa
+
+- printf formato : Permite que se escolha os campos que serão listados e formata a saída de acordo com o especificado
+em formato
+
+Exemplo de utilização: 
+
+Preciso abrir espaço em um determinado file system com muita urgência, então vou remover arquivos com mais de um megabyte, cujo último
+acesso foi há mais de 60 dias. Para isso, vou para este file system e faço:
+
+$ find . -type f - size +lOOOOOOc -atime +60 -exec rm {) \; 
+
+Formatação de saída com printf:
+
+%f - Nome do arquivo (caminho completo não aparece)
+%F - Indica a qual tipo de file system o arquivo pertence
+%g - Grupo do arquivo
+%G - Grupo do arquivo (GID - Numérico)
+%h - Caminho completo do arquivo, menos o nome
+%i - Número de inode do arquivo
+%m - Permissão do arquivo (octal)
+%p - Nome do arquivo
+%s - Tamanho do arquivo
+%u - Nome de usuário do dono do arquivo
+%U - Número do usuário (UID)
+
+Formatação de datas:
+
+%a - Data do último acesso
+%c - Data de criação
+%t - Data de alteração
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+Para usar literalmente um caractere especial sem que
+o She/1 interprete seu significado, coloque o caractere
+entre aspas ou entre apóstrofos ou coloque uma barra
+invertida antes dele.
+
+***Para separarmos comandos, utilizandos o ponto e vírgula***
+
+----------------------------------------------------------------------------------------------
+
+Aspas - Quando se coloca um caractere especial entre aspas, o Shell ignora seu significado
+exceto no caso de esse caractere ser um $, ` ou \
+
+Apóstrofos - Todos os caracteres entre apóstrofos são ignorados
+
+Barra invertida - O Shell ignora um e somente um caractere que segue a barra.
+Se colocada no final da linha, o Shell interpreta como um aviso de continuação
+da linha, desenvolvendo um prompt secundário na linha seguinte da tela.
+
+----------------------------------------------------------------------------------------------
+
+Crases são usadas para avisar ao Shell que o que está entre elas é um comando e para dar prioridade em sua execução.
+Isso é chamado de substituiçãp de comando
+
+Ex: dir = pwd   echo $dir  -> pwd
+    dir = `pwd` echo $dir  -> /home/gabriel
+
+
+**Também pode ser usada a notação: $(uname -n) para dar prioridade***
+
+

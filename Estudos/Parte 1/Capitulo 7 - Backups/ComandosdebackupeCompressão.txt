@@ -1,0 +1,67 @@
+tar - Agrupar vários arquivos em um só
+compress - Utilitário de compressão de arquivos padrão do Unix
+uncompress - Descomprime compress
+zcat - Permite visualizar conteúdo de arquivos compactador com compass
+gzip - Utilitário de compressão de arquivos padrão do Linux
+gunzip - Descomprime arquivos compactados pelo gzip
+
+---------------------------------------------------------------------------
+
+tar - Agrupa arquivos
+
+tar [-cfprtuvx] [arquivo_tar] [arquivo]
+
+arquivo - Um ou mais arquivos a agrupar. Se usado para desagrupar, pode ser omitido.
+arquivo_tar - Especifica onde será armazenado o conjunto de arquivos
+
+-c : Cria um novo arquivo .tar e adiciona a ele os arquivos
+-f : Indica que o destino é um arquivo em disco, e não uma unidade de fita magnética
+-p : Preserva as permissões originais dos arquivos
+-r : adiciona os arquivos especificados no final de um .tar, sem criar um novo
+-t : Lista o conteúdo de um .tar
+-u : Adiciona os arquivos especificados no .tar somente se eles não existirem no arquivo
+-v : Mostra o nome de cada arquivo processado
+-x : Retira os arquivos agrupados no arquivo .tar
+
+Ex: tar -tvf /dev /nstO
+
+---------------------------------------------------------------------------
+
+compress: [-cvf] [arquivo...]
+
+arquivo - Arquivo a ser comprimido (default: entrada padrão)
+-c : Escreve na saída padrão, sem modificar arquivo específicado
+-f : Força a compactação
+-v : Mostra porcentagem de compactação de cada arquivo
+
+Extensão: .Z
+
+---------------------------------------------------------------------------
+
+uncompress:  [-cv] [arquivo ..]
+
+-c : Escreve descompactado na saída padrão, sem gerar arquivo
+-v : Mostra informações sobre porcentagem de compactação
+
+---------------------------------------------------------------------------
+
+gzip: [-cvfrd] [arquivo...]
+
+Extensão: .gz
+
+-c : Escreve na saída padrão, sem modificar o arquivo especificado
+-f : Força a compactação
+-v : Mostra informa;cões sobre compactação
+-r : Comprime também o conteúdo dos subdiretórios
+-d : Expande arquivos compactados (decompress)
+
+---------------------------------------------------------------------------
+
+gunzip: [-cv] [arquivo...]
+
+-c : escreve na saída padrão, sem gerar arquivo descompactado
+-v : mostra informações sobre a porcentagem de compactação de cada arquivo
+
+
+
+
