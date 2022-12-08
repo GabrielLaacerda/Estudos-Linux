@@ -5,7 +5,7 @@ Execução de operações aritméticas:
 Ex: expr 2+7 = errado
     expr 2 + 7 = certo
 
-Ex: "2 * 7" -> Proteger o asterístico
+Ex: expr 2 \* 7 -> Proteger o asterístico
 
 ***Só aceita números inteiros***
 

@@ -73,10 +73,10 @@ sed 's/r/X/2g' arquivo -> Substitui todas as ocorrencias a partir da segunda (de
 
 Exemplo de maneira boa e ruim do comando:
 Ruim:
-cat quequeisso | sed 's/ .* //' -> Envia o texto para o sed, q ue substituiu tudo após o primeiro espaço por nada (//)
+cat quequeisso | sed 's/ .*//' -> Envia o texto para o sed, que substituiu tudo após o primeiro espaço por nada (//)
 
 Boa:
-sed 's/ .//' quequeisso
+sed 's/ .*//' quequeisso
 
 
 ***Para que as alterações tenham efeito, redirecionar para outro arquivo (nunca o mesmo) e depois utilizar comando mv***
@@ -169,7 +169,8 @@ sed -n '/ de /!p' -> Linhas que não contém a cadeia
 
 ----------------------------------------------------------------------------------
 
--i -> Salvar definitivamente um arquivo quando alterado pelo sed
+-g -> Salvar definitivamente um arquivo quando alterado pelo sed
+-i -> Salvar o conteudo original em outro arquivo
 
 Ex: 
 

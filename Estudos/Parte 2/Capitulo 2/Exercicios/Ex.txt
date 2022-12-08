@@ -1,0 +1,49 @@
+sed 's#UNIX#unix#' quequeisso -> Não surgiu efeito, pois não foram utilizadas os "/", e não Existem
+cadeias UNIX da maneira que foi escrita
+
+sed '1,2s/[A-Z]//' quequeisso -> Substitui a primeira ocorrencia de uma letra maiuscula
+na primeira e segunda linha por vazio
+
+sed '1,2s'/[a-z]//g quequeisso -> Substitui todas as letras minusculas da primeira e segunda linha por vazio
+
+sed 's/ .*//' quequeisso -> Substitui tudo apoós o primeiro espaço por vazio
+
+sed -n '/UNIX/p' quequeisso -> Listar as linhas que tenha a ocorrencia da palavra 'UNIX' ao menos uma vez
+
+sed '/UNIX/d' quequeisso -> Deletar linhas que contenham a cadeia 'UNIX'
+
+cat quequeisso | sed 's/ .*//' -> Redireciona a saida com cat com o pipe para o comando sed, que substituida
+tudo apoós o primeiro espaço por vazio
+
+expr 15 / 2 * 5 -> Erro, por não ter protegido o esterístico (metacaractere)
+
+expr 15\* 5 /2 -> Executa a operação (37)
+
+finger | cut -c10-30 | cut -f1 -d" " | tr "[a-z]" "[A-Z]" -> Joga as informaçoes do usuario para o cut, quequeisso
+pega os caracteres da pos1 ate pos30 e joga para o outro cut que pega o primeiro campo de cada linha,
+usando o delimitador " " e joga para o tr, que substitui as letras minusculas por maiusculas
+
+grep '^(P|S)' quequeisso -> Não funcionará, pois o grep não interpreta parenteses e  nem o pipe
+
+grep '^(P|S)' quequeisso -> Buscara todas as linhas que comecem com P ou S (busca no arquivo quequeisso)
+
+egrep -v '^(E|C)' quequeisso | wc -l-> Encontra as linhas que não começam com E ou C e manda para o wc
+que conta a quantidade de linhas recebidas (arquivo quequeisso)
+
+fgrep -l ou * -> busca arquivos que contenham certa cadeia sem se importar com as demais infos (-l),
+em todos os arquivos do diretorio corrente
+
+grep gabriel /etc/passwd | tr : - -> Busca 'gabriel' nos arquivos presentes em /etc/passwd
+e joga para o tr, que substitui os caracteres ':' por '-'
+
+expr length "Ce qui sabe" -> Retorna o tamanho da string passada
+
+
+
+
+
+
+
+
+
+
