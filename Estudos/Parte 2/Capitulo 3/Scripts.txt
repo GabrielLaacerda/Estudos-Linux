@@ -1,0 +1,43 @@
+Dar permissão de execução: chmod +x arq ou chmod 7444 arq
+
+--------------------------------------------------------------
+
+Utilizando variáveis: NomeVariavel=valor
+
+Ex: variavel==qqcoisa
+    vazio =
+
+Para exibir variaveis, utilizar cifrão ($) antes da mesma (echo $variavel)
+
+---------------------------------------------------------------
+
+Passagem e recebimento de parâmetros:
+
+SCRIPT:
+
+echo $1
+echo $2
+echo $2
+
+CHAMADA DO PROGRAMA: ./program param1 param2 param3
+
+$0 -> Devovle o nome do programa
+$# -> Devolve a quantidade de parâmetros recebidos 
+$* -> Devolve o conjunto de todos os parametros separados por espaço em branco
+
+shift n -> Mata os n primeiros parametros (default = 1) (permite passar mais de 9 parametros)
+
+Ex:
+
+SCRIPT:
+
+echo $1
+shift 10
+echo $1
+
+**Matou os 10 parametros e o 11 se transforma no 1 (Passagem de 11 parametros)
+
+" -> Agrupa parametro. Ex: ./program "1. 2 . 3. 4. 5." (Printara o primeiro parametro como 1. 2 . 3. 4. 5)
+
+
+
